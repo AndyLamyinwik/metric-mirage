@@ -1,0 +1,11 @@
+{
+  "company": "Synthetic Example Company",
+  "metric_name": "Adjusted EBITDA",
+  "fiscal_period": "FY 2025",
+  "adjustments": [
+    "Depreciation & Amortization",
+    "Stock-Based Compensation",
+    "Restructuring Costs"
+  ],
+  "source": "SYNTHETIC: invented FY 2025 example; not a real financial report."
+}

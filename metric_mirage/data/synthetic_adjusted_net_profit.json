@@ -1,0 +1,17 @@
+{
+  "data_type": "SYNTHETIC",
+  "old": {
+    "company": "Synthetic HK Company",
+    "metric_name": "Adjusted Net Profit",
+    "fiscal_period": "FY2024",
+    "adjustments": ["share_based_payments", "amortisation_of_intangible_assets"],
+    "source": "SYNTHETIC: invented FY2024 definition for the dashboard demo; no PDF evidence attached."
+  },
+  "new": {
+    "company": "Synthetic HK Company",
+    "metric_name": "Adjusted Net Profit",
+    "fiscal_period": "FY2025",
+    "adjustments": ["share_based_payments", "amortisation_of_intangible_assets", "listing_expenses"],
+    "source": "SYNTHETIC: invented FY2025 definition for the dashboard demo; no PDF evidence attached."
+  }
+}

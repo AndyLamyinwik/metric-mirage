@@ -1,0 +1,35 @@
+# Python bytecode and tooling caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments and packaging output
+.venv*/
+venv*/
+build/
+dist/
+*.egg-info/
+
+# Local report metadata and source PDFs
+.metric_mirage/
+*.[pP][dD][fF]
+reports.json
+registry.json
+/definition_*.json
+/evidence_*.json
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Local editor and operating system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

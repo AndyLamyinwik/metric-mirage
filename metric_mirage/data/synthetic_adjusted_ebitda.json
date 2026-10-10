@@ -1,0 +1,25 @@
+{
+  "data_type": "SYNTHETIC",
+  "description": "Invented company and adjustment lists for demonstration; not real financial reporting data.",
+  "old": {
+    "company": "Synthetic Example Company",
+    "metric_name": "Adjusted EBITDA",
+    "fiscal_period": "FY 2024",
+    "adjustments": [
+      "Depreciation & Amortization",
+      "Stock-Based Compensation"
+    ],
+    "source": "SYNTHETIC: invented FY 2024 example; not a real financial report."
+  },
+  "new": {
+    "company": "Synthetic Example Company",
+    "metric_name": "Adjusted EBITDA",
+    "fiscal_period": "FY 2025",
+    "adjustments": [
+      "Depreciation & Amortization",
+      "Stock-Based Compensation",
+      "Restructuring Costs"
+    ],
+    "source": "SYNTHETIC: invented FY 2025 example; not a real financial report."
+  }
+}

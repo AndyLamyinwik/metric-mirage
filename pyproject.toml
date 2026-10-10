@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "metric-mirage"
+version = "0.1.0"
+description = "Source-grounded financial metric definition drift analysis for Hong Kong equities."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "Metric Mirage contributors"}]
+dependencies = ["pypdf>=6,<7", "streamlit>=1.65,<2", "plotly>=6,<7"]
+
+[project.optional-dependencies]
+dev = ["build>=1.2,<2"]
+
+[tool.setuptools.packages.find]
+include = ["metric_mirage", "metric_mirage.*"]
+
+[tool.setuptools.package-data]
+metric_mirage = ["data/*.json"]

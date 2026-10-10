@@ -1,0 +1,127 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    env:
+      PYTHONUTF8: "1"
+      STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Install project and build tools
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e '.[dev]'
+          python -m pip check
+      - name: Run all offline unit and integration tests
+        run: python -m unittest discover -s tests -v
+      - name: Check CLI and dashboard imports
+        run: |
+          python -m metric_mirage demo
+          python -c "import streamlit, plotly; import metric_mirage.dashboard.ui"
+      - name: Build source and wheel distributions
+        run: python -m build
+      - name: Verify source and wheel distribution contents
+        run: |
+          python - <<'PY'
+          from pathlib import Path, PurePosixPath
+          from tarfile import open as open_tar
+          from zipfile import ZipFile
+
+          def check_private_files(names):
+              for name in names:
+                  parts = PurePosixPath(name.lower()).parts
+                  assert not name.lower().endswith(".pdf"), name
+                  assert not set(parts) & {".metric_mirage", ".git", ".aws", ".venv", "secrets.toml"}, name
+                  assert not any(part == ".env" or part.startswith(".env.") for part in parts), name
+
+          wheels = list(Path("dist").glob("*.whl"))
+          assert len(wheels) == 1, wheels
+          with ZipFile(wheels[0]) as archive:
+              names = set(archive.namelist())
+          required = {
+              "metric_mirage/data/synthetic_adjusted_ebitda.json",
+              "metric_mirage/data/synthetic_adjusted_net_profit.json",
+              "metric_mirage/dashboard/ui.py",
+              "metric_mirage/dashboard/services.py",
+          }
+          assert required <= names, required - names
+          check_private_files(names)
+          sources = list(Path("dist").glob("*.tar.gz"))
+          assert len(sources) == 1, sources
+          with open_tar(sources[0], "r:gz") as archive:
+              paths = [PurePosixPath(member.name) for member in archive.getmembers()]
+          assert len({path.parts[0] for path in paths}) == 1
+          assert not any(".." in path.parts or path.is_absolute() for path in paths)
+          source_names = {str(PurePosixPath(*path.parts[1:])) for path in paths}
+          required_source = required | {"app.py", ".streamlit/config.toml", ".gitignore", "tests/__init__.py", "README.md", "LICENSE"}
+          assert required_source <= source_names, required_source - source_names
+          check_private_files(source_names)
+          PY
+      - name: Install wheel and run outside the source checkout
+        run: |
+          wheel_env="$RUNNER_TEMP/metric-mirage-wheel"
+          python -m venv "$wheel_env"
+          "$wheel_env/bin/python" -m pip install "$PWD"/dist/*.whl
+          "$wheel_env/bin/python" -m pip check
+          cd "$RUNNER_TEMP"
+          "$wheel_env/bin/python" -I -m metric_mirage demo
+          "$wheel_env/bin/python" -I - <<'PY'
+          from importlib import metadata, resources
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+          import sys
+          import tempfile
+
+          import metric_mirage
+          import metric_mirage.dashboard.ui
+          from metric_mirage.dashboard.services import demo_analysis
+
+          assert metadata.version("metric-mirage") == "0.1.0"
+          assert not Path(metric_mirage.__file__).resolve().is_relative_to(
+              Path(os.environ["GITHUB_WORKSPACE"]).resolve()
+          )
+          for name in ("synthetic_adjusted_ebitda.json", "synthetic_adjusted_net_profit.json"):
+              data = json.loads(resources.files("metric_mirage").joinpath("data", name).read_text(encoding="utf-8"))
+              assert data["data_type"] == "SYNTHETIC"
+              assert all(data[side]["source"].startswith("SYNTHETIC:") for side in ("old", "new"))
+          report = demo_analysis()
+          assert [len(report[key]) for key in ("added_adjustments", "removed_adjustments", "unchanged_adjustments")] == [1, 0, 2]
+          assert "evidence" not in report
+          with tempfile.TemporaryDirectory(prefix="metric-mirage-wheel-smoke-") as temporary:
+              directory = Path(temporary)
+              for side in ("old", "new"):
+                  (directory / f"{side}.json").write_text(json.dumps(data[side], ensure_ascii=False), encoding="utf-8")
+              for command in ("compare", "drift"):
+                  completed = subprocess.run(
+                      [sys.executable, "-I", "-m", "metric_mirage", command, "old.json", "new.json", "--format", "json"],
+                      cwd=directory, capture_output=True, text=True, encoding="utf-8", check=True,
+                  )
+                  output = json.loads(completed.stdout)
+                  assert output["added_adjustments"] == ["listing_expenses"]
+                  assert output["has_definition_drift"] is True
+                  assert completed.stderr == ""
+          PY
