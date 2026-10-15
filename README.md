@@ -1,5 +1,9 @@
 # Metric Mirage
 
+[English](#english) | [繁體中文](#traditional-chinese) | [简体中文](#simplified-chinese)
+
+<a id="english"></a>
+
 **Financial Metric Forensics for Hong Kong Equities**
 
 Track how financial metric definitions evolve across reporting periods, with source-grounded evidence from corporate disclosures.
@@ -240,3 +244,141 @@ Candidates remain separate from definitions until a user explicitly selects them
 ## License
 
 Metric Mirage is available under the [MIT License](LICENSE).
+
+---
+
+<a id="traditional-chinese"></a>
+
+## 繁體中文
+
+### 專案簡介
+
+Metric Mirage 是面向香港股票市場的本地財務指標口徑研究工具。你可以登記自己的財報 PDF、搜尋原文、檢視「經調整淨利潤」（Adjusted Net Profit）附近的調整候選項目，再明確選取要保留的項目，匯出指標定義並比較不同報告期間的新增、移除及保留項目。選用的證據快照可保留原文片段、PDF 頁碼及檔案雜湊，方便追溯來源。
+
+### 入口與快速開始
+
+本 GitHub 頁面提供原始碼與使用文件；Dashboard 在你的電腦本地執行。需要 **Python 3.11 或以上版本**。
+
+1. 下載專案並建立虛擬環境：
+
+   ```sh
+   git clone https://github.com/AndyLamyinwik/metric-mirage.git
+   cd metric-mirage
+   python -m venv .venv
+   ```
+
+2. 啟用虛擬環境。Windows PowerShell 使用：
+
+   ```powershell
+   .\.venv\Scripts\Activate.ps1
+   ```
+
+   macOS／Linux 使用：
+
+   ```sh
+   source .venv/bin/activate
+   ```
+
+3. 安裝並啟動 Dashboard：
+
+   ```sh
+   python -m pip install -e .
+   python -m streamlit run app.py
+   ```
+
+4. 在瀏覽器開啟終端顯示的本地網址，通常是 **http://localhost:8501**。在 **Overview** 頁面按 **Explore Demo**，即可體驗標示為 **SYNTHETIC（合成資料）** 的比較範例。安裝完成後，示範不需要財報檔案或 API Key。
+
+### 如何使用
+
+介面目前使用英文，主要入口如下：
+
+| 頁面 | 用途 |
+| --- | --- |
+| Overview | 查看比較摘要、圖表，或開啟合成示範。 |
+| Report Manager | 上傳並登記你有權處理的 PDF，填寫股票代碼、公司、期間與來源。 |
+| Financial Metric Explorer | 搜尋原文、檢視調整候選項目，明確選取後下載已確認的指標定義 JSON。 |
+| Drift Analysis | 載入舊、新兩期定義，比較調整項目並下載 Markdown 或 JSON 報告。 |
+| Evidence Explorer | 建立或載入證據快照，檢視原文、PDF 頁碼及檔案雜湊。 |
+
+也可以在專案目錄使用命令列：
+
+```sh
+python -m metric_mirage demo
+python -m metric_mirage compare examples/old.json examples/new.json
+python -m metric_mirage drift definition_2024.json definition_2025.json
+```
+
+前兩個指令使用內附的合成資料；最後一個需要先準備你自己確認並匯出的兩期定義 JSON。完整報告登記、搜尋、確認及證據指令請見上方 [CLI Usage](#cli-usage)。
+
+### 方法與限制
+
+候選項目由保守規則提取，必須由使用者主動選取；比較結果僅描述已確認調整項目集合的變化，不能獨立證實完整財務公式已改變，也不提供財務舞弊或投資風險判斷。PDF 需有可提取的文字層，部分中文字型可能無法正確讀取；目前沒有 OCR。Dashboard 適用於本地單使用者操作，沒有登入驗證或多租戶隔離。內附資料皆為合成範例，尚未完成真實公司 PDF 驗證。專案採用 [MIT 授權](LICENSE)。
+
+---
+
+<a id="simplified-chinese"></a>
+
+## 简体中文
+
+### 项目简介
+
+Metric Mirage 是面向香港股票市场的本地财务指标口径研究工具。你可以登记自己的财报 PDF、搜索原文、查看“经调整净利润”（Adjusted Net Profit）附近的调整候选项目，再明确选择要保留的项目，导出指标定义并比较不同报告期间的新增、移除及保留项目。可选的证据快照能够保留原文片段、PDF 页码及文件哈希，方便追溯来源。
+
+### 入口与快速开始
+
+本 GitHub 页面提供源代码与使用文档；Dashboard 在你的电脑本地运行。需要 **Python 3.11 或以上版本**。
+
+1. 下载项目并创建虚拟环境：
+
+   ```sh
+   git clone https://github.com/AndyLamyinwik/metric-mirage.git
+   cd metric-mirage
+   python -m venv .venv
+   ```
+
+2. 激活虚拟环境。Windows PowerShell 使用：
+
+   ```powershell
+   .\.venv\Scripts\Activate.ps1
+   ```
+
+   macOS／Linux 使用：
+
+   ```sh
+   source .venv/bin/activate
+   ```
+
+3. 安装并启动 Dashboard：
+
+   ```sh
+   python -m pip install -e .
+   python -m streamlit run app.py
+   ```
+
+4. 在浏览器打开终端显示的本地网址，通常是 **http://localhost:8501**。在 **Overview** 页面点击 **Explore Demo**，即可体验标为 **SYNTHETIC（合成数据）** 的比较示例。安装完成后，演示不需要财报文件或 API Key。
+
+### 如何使用
+
+界面目前使用英文，主要入口如下：
+
+| 页面 | 用途 |
+| --- | --- |
+| Overview | 查看比较摘要、图表，或打开合成演示。 |
+| Report Manager | 上传并登记你有权处理的 PDF，填写股票代码、公司、期间与来源。 |
+| Financial Metric Explorer | 搜索原文、查看调整候选项目，明确选择后下载已确认的指标定义 JSON。 |
+| Drift Analysis | 载入旧、新两期定义，比较调整项目并下载 Markdown 或 JSON 报告。 |
+| Evidence Explorer | 创建或载入证据快照，查看原文、PDF 页码及文件哈希。 |
+
+也可以在项目目录使用命令行：
+
+```sh
+python -m metric_mirage demo
+python -m metric_mirage compare examples/old.json examples/new.json
+python -m metric_mirage drift definition_2024.json definition_2025.json
+```
+
+前两个命令使用内附的合成数据；最后一个需要先准备你自己确认并导出的两期定义 JSON。完整报告登记、搜索、确认及证据命令请见上方 [CLI Usage](#cli-usage)。
+
+### 方法与限制
+
+候选项目由保守规则提取，必须由用户主动选择；比较结果仅描述已确认调整项目集合的变化，不能独立证实完整财务公式已改变，也不提供财务舞弊或投资风险判断。PDF 需要可提取的文本层，部分中文字体可能无法正确读取；目前没有 OCR。Dashboard 适用于本地单用户操作，没有登录验证或多租户隔离。内附数据均为合成示例，尚未完成真实公司 PDF 验证。项目采用 [MIT 许可证](LICENSE)。
