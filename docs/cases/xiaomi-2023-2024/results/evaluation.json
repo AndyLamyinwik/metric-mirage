@@ -1,0 +1,2977 @@
+{
+  "current": {
+    "primary_key": [
+      "report_id",
+      "pdf_page",
+      "canonical_item"
+    ],
+    "scope": "Only pages represented in review_labels.csv are scored; other output pages are unreviewed.",
+    "supported_scope": "All supported labels, including nested components, enter total TP/FP/FN.",
+    "stratum_policy": "Direct and nested strata report recall only; all false positives remain in the primary page-occurrence score because candidates do not predict a target level.",
+    "report_item_set_policy": "Deduplicate supported (report_id, canonical_item, target_level) keys; a set item is recalled only if at least one supported page occurrence is matched. Page-occurrence errors remain in the primary score.",
+    "dictionary_scope": [
+      "acquisition_related_expenses",
+      "amortisation_of_intangible_assets",
+      "fair_value_changes",
+      "impairment_losses",
+      "listing_expenses",
+      "share_based_payments"
+    ],
+    "by_report": {
+      "xiaomi-fy2023": {
+        "counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 4
+        },
+        "precision": 1.0,
+        "recall": 0.42857142857142855,
+        "matched": [
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 26,
+            "printed_page": "24",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+            "canonical_item": "amortisation_of_intangible_assets",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 26,
+            "printed_page": "24",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "net fair value changes on investments",
+            "canonical_item": "fair_value_changes",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 26,
+            "printed_page": "24",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "share-based compensation",
+            "canonical_item": "share_based_payments",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+            "label_origin": "AI-assisted; pending independent human review"
+          }
+        ],
+        "missing": [
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 27,
+            "printed_page": "25",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+            "canonical_item": "amortisation_of_intangible_assets",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. Same page also gives FY2022 comparison.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 27,
+            "printed_page": "25",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Net fair value changes on investments",
+            "canonical_item": "fair_value_changes",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. Same page also gives FY2022 comparison.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 27,
+            "printed_page": "25",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "the impairment provision for investments",
+            "canonical_item": "impairment_losses",
+            "support_status": "supported",
+            "target_level": "nested",
+            "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (1); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 27,
+            "printed_page": "25",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Share-based compensation",
+            "canonical_item": "share_based_payments",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. Same page also gives FY2022 comparison.",
+            "label_origin": "AI-assisted; pending independent human review"
+          }
+        ],
+        "false_positives": [],
+        "by_target_level": {
+          "direct": {
+            "counts": {
+              "matched": 3,
+              "expected": 6,
+              "missing": 3
+            },
+            "recall": 0.5,
+            "matched": [
+              {
+                "report_id": "xiaomi-fy2023",
+                "fiscal_period": "FY2023",
+                "pdf_page": 26,
+                "printed_page": "24",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+                "canonical_item": "amortisation_of_intangible_assets",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2023",
+                "fiscal_period": "FY2023",
+                "pdf_page": 26,
+                "printed_page": "24",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "net fair value changes on investments",
+                "canonical_item": "fair_value_changes",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2023",
+                "fiscal_period": "FY2023",
+                "pdf_page": 26,
+                "printed_page": "24",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "share-based compensation",
+                "canonical_item": "share_based_payments",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+                "label_origin": "AI-assisted; pending independent human review"
+              }
+            ],
+            "missing": [
+              {
+                "report_id": "xiaomi-fy2023",
+                "fiscal_period": "FY2023",
+                "pdf_page": 27,
+                "printed_page": "25",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+                "canonical_item": "amortisation_of_intangible_assets",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. Same page also gives FY2022 comparison.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2023",
+                "fiscal_period": "FY2023",
+                "pdf_page": 27,
+                "printed_page": "25",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "Net fair value changes on investments",
+                "canonical_item": "fair_value_changes",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. Same page also gives FY2022 comparison.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2023",
+                "fiscal_period": "FY2023",
+                "pdf_page": 27,
+                "printed_page": "25",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "Share-based compensation",
+                "canonical_item": "share_based_payments",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. Same page also gives FY2022 comparison.",
+                "label_origin": "AI-assisted; pending independent human review"
+              }
+            ]
+          },
+          "nested": {
+            "counts": {
+              "matched": 0,
+              "expected": 1,
+              "missing": 1
+            },
+            "recall": 0.0,
+            "matched": [],
+            "missing": [
+              {
+                "report_id": "xiaomi-fy2023",
+                "fiscal_period": "FY2023",
+                "pdf_page": 27,
+                "printed_page": "25",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "the impairment provision for investments",
+                "canonical_item": "impairment_losses",
+                "support_status": "supported",
+                "target_level": "nested",
+                "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (1); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+                "label_origin": "AI-assisted; pending independent human review"
+              }
+            ]
+          }
+        },
+        "report_item_set": {
+          "counts": {
+            "matched": 3,
+            "expected": 4,
+            "missing": 1
+          },
+          "recall": 0.75,
+          "matched": [
+            {
+              "report_id": "xiaomi-fy2023",
+              "canonical_item": "amortisation_of_intangible_assets",
+              "target_level": "direct"
+            },
+            {
+              "report_id": "xiaomi-fy2023",
+              "canonical_item": "fair_value_changes",
+              "target_level": "direct"
+            },
+            {
+              "report_id": "xiaomi-fy2023",
+              "canonical_item": "share_based_payments",
+              "target_level": "direct"
+            }
+          ],
+          "missing": [
+            {
+              "report_id": "xiaomi-fy2023",
+              "canonical_item": "impairment_losses",
+              "target_level": "nested"
+            }
+          ],
+          "primary_key": [
+            "report_id",
+            "canonical_item",
+            "target_level"
+          ],
+          "by_target_level": {
+            "direct": {
+              "counts": {
+                "matched": 3,
+                "expected": 3,
+                "missing": 0
+              },
+              "recall": 1.0,
+              "matched": [
+                {
+                  "report_id": "xiaomi-fy2023",
+                  "canonical_item": "amortisation_of_intangible_assets",
+                  "target_level": "direct"
+                },
+                {
+                  "report_id": "xiaomi-fy2023",
+                  "canonical_item": "fair_value_changes",
+                  "target_level": "direct"
+                },
+                {
+                  "report_id": "xiaomi-fy2023",
+                  "canonical_item": "share_based_payments",
+                  "target_level": "direct"
+                }
+              ],
+              "missing": []
+            },
+            "nested": {
+              "counts": {
+                "matched": 0,
+                "expected": 1,
+                "missing": 1
+              },
+              "recall": 0.0,
+              "matched": [],
+              "missing": [
+                {
+                  "report_id": "xiaomi-fy2023",
+                  "canonical_item": "impairment_losses",
+                  "target_level": "nested"
+                }
+              ]
+            }
+          }
+        },
+        "review_counts": {
+          "label_rows": 18,
+          "unique_supported_keys": 7,
+          "support_status": {
+            "negative": 7,
+            "supported": 7,
+            "unsupported": 4
+          },
+          "target_level": {
+            "negative": 7,
+            "direct": 10,
+            "nested": 1
+          },
+          "reviewed_pages": 8
+        },
+        "candidate_counts": {
+          "raw_rows": 3,
+          "unique_keys": 3,
+          "scored_keys": 3,
+          "unreviewed_keys": 0,
+          "outside_dictionary_keys": 0
+        },
+        "scoring_pages": {
+          "xiaomi-fy2023": [
+            10,
+            17,
+            26,
+            27,
+            28,
+            215,
+            267,
+            268
+          ]
+        },
+        "outside_reviewed_pages": {
+          "xiaomi-fy2023": []
+        },
+        "unreviewed": [],
+        "outside_dictionary_labels": [
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 26,
+            "printed_page": "24",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "changes of value of financial liabilities to fund investors",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Explicit group adjustment outside the six canonical concepts. Do not conflate liability valuation with the separately named investment fair-value adjustment.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 26,
+            "printed_page": "24",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "income tax effects of non-IFRS adjustments",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Explicit group adjustment outside the six canonical concepts; this is the tax effect of adjustments, not ordinary income tax expense.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 27,
+            "printed_page": "25",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Changes of value of financial liabilities to fund investors",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Group reconciliation FY2023 signed adjustment 410,946 RMB thousand; named adjustment is outside the six canonical concepts. FY2022 comparison is (583,862).",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 27,
+            "printed_page": "25",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Income tax effects",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Group reconciliation FY2023 signed adjustment 645,643 RMB thousand; outside the six canonical concepts. FY2022 comparison is (417,894).",
+            "label_origin": "AI-assisted; pending independent human review"
+          }
+        ],
+        "outside_dictionary_predictions": []
+      },
+      "xiaomi-fy2024": {
+        "counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 4
+        },
+        "precision": 1.0,
+        "recall": 0.42857142857142855,
+        "matched": [
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2024",
+            "pdf_page": 30,
+            "printed_page": "28",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+            "canonical_item": "amortisation_of_intangible_assets",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2024",
+            "pdf_page": 30,
+            "printed_page": "28",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "net fair value changes on investments",
+            "canonical_item": "fair_value_changes",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2024",
+            "pdf_page": 30,
+            "printed_page": "28",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "share-based compensation",
+            "canonical_item": "share_based_payments",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+            "label_origin": "AI-assisted; pending independent human review"
+          }
+        ],
+        "missing": [
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2023",
+            "pdf_page": 31,
+            "printed_page": "29",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+            "canonical_item": "amortisation_of_intangible_assets",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2023",
+            "pdf_page": 31,
+            "printed_page": "29",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Net fair value changes on investments",
+            "canonical_item": "fair_value_changes",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2024",
+            "pdf_page": 31,
+            "printed_page": "29",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "the impairment provision for investments",
+            "canonical_item": "impairment_losses",
+            "support_status": "supported",
+            "target_level": "nested",
+            "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (2); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2023",
+            "pdf_page": 31,
+            "printed_page": "29",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Share-based compensation",
+            "canonical_item": "share_based_payments",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+            "label_origin": "AI-assisted; pending independent human review"
+          }
+        ],
+        "false_positives": [],
+        "by_target_level": {
+          "direct": {
+            "counts": {
+              "matched": 3,
+              "expected": 6,
+              "missing": 3
+            },
+            "recall": 0.5,
+            "matched": [
+              {
+                "report_id": "xiaomi-fy2024",
+                "fiscal_period": "FY2024",
+                "pdf_page": 30,
+                "printed_page": "28",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+                "canonical_item": "amortisation_of_intangible_assets",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "fiscal_period": "FY2024",
+                "pdf_page": 30,
+                "printed_page": "28",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "net fair value changes on investments",
+                "canonical_item": "fair_value_changes",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "fiscal_period": "FY2024",
+                "pdf_page": 30,
+                "printed_page": "28",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "share-based compensation",
+                "canonical_item": "share_based_payments",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+                "label_origin": "AI-assisted; pending independent human review"
+              }
+            ],
+            "missing": [
+              {
+                "report_id": "xiaomi-fy2024",
+                "fiscal_period": "FY2023",
+                "pdf_page": 31,
+                "printed_page": "29",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+                "canonical_item": "amortisation_of_intangible_assets",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "fiscal_period": "FY2023",
+                "pdf_page": 31,
+                "printed_page": "29",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "Net fair value changes on investments",
+                "canonical_item": "fair_value_changes",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "fiscal_period": "FY2023",
+                "pdf_page": 31,
+                "printed_page": "29",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "Share-based compensation",
+                "canonical_item": "share_based_payments",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+                "label_origin": "AI-assisted; pending independent human review"
+              }
+            ]
+          },
+          "nested": {
+            "counts": {
+              "matched": 0,
+              "expected": 1,
+              "missing": 1
+            },
+            "recall": 0.0,
+            "matched": [],
+            "missing": [
+              {
+                "report_id": "xiaomi-fy2024",
+                "fiscal_period": "FY2024",
+                "pdf_page": 31,
+                "printed_page": "29",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "the impairment provision for investments",
+                "canonical_item": "impairment_losses",
+                "support_status": "supported",
+                "target_level": "nested",
+                "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (2); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+                "label_origin": "AI-assisted; pending independent human review"
+              }
+            ]
+          }
+        },
+        "report_item_set": {
+          "counts": {
+            "matched": 3,
+            "expected": 4,
+            "missing": 1
+          },
+          "recall": 0.75,
+          "matched": [
+            {
+              "report_id": "xiaomi-fy2024",
+              "canonical_item": "amortisation_of_intangible_assets",
+              "target_level": "direct"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "canonical_item": "fair_value_changes",
+              "target_level": "direct"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "canonical_item": "share_based_payments",
+              "target_level": "direct"
+            }
+          ],
+          "missing": [
+            {
+              "report_id": "xiaomi-fy2024",
+              "canonical_item": "impairment_losses",
+              "target_level": "nested"
+            }
+          ],
+          "primary_key": [
+            "report_id",
+            "canonical_item",
+            "target_level"
+          ],
+          "by_target_level": {
+            "direct": {
+              "counts": {
+                "matched": 3,
+                "expected": 3,
+                "missing": 0
+              },
+              "recall": 1.0,
+              "matched": [
+                {
+                  "report_id": "xiaomi-fy2024",
+                  "canonical_item": "amortisation_of_intangible_assets",
+                  "target_level": "direct"
+                },
+                {
+                  "report_id": "xiaomi-fy2024",
+                  "canonical_item": "fair_value_changes",
+                  "target_level": "direct"
+                },
+                {
+                  "report_id": "xiaomi-fy2024",
+                  "canonical_item": "share_based_payments",
+                  "target_level": "direct"
+                }
+              ],
+              "missing": []
+            },
+            "nested": {
+              "counts": {
+                "matched": 0,
+                "expected": 1,
+                "missing": 1
+              },
+              "recall": 0.0,
+              "matched": [],
+              "missing": [
+                {
+                  "report_id": "xiaomi-fy2024",
+                  "canonical_item": "impairment_losses",
+                  "target_level": "nested"
+                }
+              ]
+            }
+          }
+        },
+        "review_counts": {
+          "label_rows": 18,
+          "unique_supported_keys": 7,
+          "support_status": {
+            "negative": 7,
+            "supported": 7,
+            "unsupported": 4
+          },
+          "target_level": {
+            "negative": 7,
+            "direct": 10,
+            "nested": 1
+          },
+          "reviewed_pages": 8
+        },
+        "candidate_counts": {
+          "raw_rows": 3,
+          "unique_keys": 3,
+          "scored_keys": 3,
+          "unreviewed_keys": 0,
+          "outside_dictionary_keys": 0
+        },
+        "scoring_pages": {
+          "xiaomi-fy2024": [
+            10,
+            19,
+            30,
+            31,
+            32,
+            244,
+            299,
+            300
+          ]
+        },
+        "outside_reviewed_pages": {
+          "xiaomi-fy2024": []
+        },
+        "unreviewed": [],
+        "outside_dictionary_labels": [
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2024",
+            "pdf_page": 30,
+            "printed_page": "28",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "changes of value of financial liabilities to investors",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Explicit group adjustment outside the six canonical concepts. Do not conflate liability valuation with the separately named investment fair-value adjustment.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2024",
+            "pdf_page": 30,
+            "printed_page": "28",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "income tax effects of non-IFRS adjustments",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Explicit group adjustment outside the six canonical concepts; this is the tax effect of adjustments, not ordinary income tax expense.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2023",
+            "pdf_page": 31,
+            "printed_page": "29",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Changes of value of financial liabilities to investors",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Group reconciliation FY2023 signed adjustment 410,946 RMB thousand; named adjustment is outside the six canonical concepts. FY2024 current-period amount (1,243,607) is on PDF page 30.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2023",
+            "pdf_page": 31,
+            "printed_page": "29",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Income tax effects",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Group reconciliation FY2023 signed adjustment 645,643 RMB thousand; outside the six canonical concepts. FY2024 current-period amount (148,320) is on PDF page 30.",
+            "label_origin": "AI-assisted; pending independent human review"
+          }
+        ],
+        "outside_dictionary_predictions": []
+      }
+    },
+    "total": {
+      "counts": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 8
+      },
+      "precision": 1.0,
+      "recall": 0.42857142857142855,
+      "matched": [
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 26,
+          "printed_page": "24",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+          "canonical_item": "amortisation_of_intangible_assets",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 26,
+          "printed_page": "24",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "net fair value changes on investments",
+          "canonical_item": "fair_value_changes",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 26,
+          "printed_page": "24",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "share-based compensation",
+          "canonical_item": "share_based_payments",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2024",
+          "pdf_page": 30,
+          "printed_page": "28",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+          "canonical_item": "amortisation_of_intangible_assets",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2024",
+          "pdf_page": 30,
+          "printed_page": "28",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "net fair value changes on investments",
+          "canonical_item": "fair_value_changes",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2024",
+          "pdf_page": 30,
+          "printed_page": "28",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "share-based compensation",
+          "canonical_item": "share_based_payments",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+          "label_origin": "AI-assisted; pending independent human review"
+        }
+      ],
+      "missing": [
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 27,
+          "printed_page": "25",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+          "canonical_item": "amortisation_of_intangible_assets",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. Same page also gives FY2022 comparison.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 27,
+          "printed_page": "25",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Net fair value changes on investments",
+          "canonical_item": "fair_value_changes",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. Same page also gives FY2022 comparison.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 27,
+          "printed_page": "25",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "the impairment provision for investments",
+          "canonical_item": "impairment_losses",
+          "support_status": "supported",
+          "target_level": "nested",
+          "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (1); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 27,
+          "printed_page": "25",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Share-based compensation",
+          "canonical_item": "share_based_payments",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. Same page also gives FY2022 comparison.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2023",
+          "pdf_page": 31,
+          "printed_page": "29",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+          "canonical_item": "amortisation_of_intangible_assets",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2023",
+          "pdf_page": 31,
+          "printed_page": "29",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Net fair value changes on investments",
+          "canonical_item": "fair_value_changes",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2024",
+          "pdf_page": 31,
+          "printed_page": "29",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "the impairment provision for investments",
+          "canonical_item": "impairment_losses",
+          "support_status": "supported",
+          "target_level": "nested",
+          "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (2); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2023",
+          "pdf_page": 31,
+          "printed_page": "29",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Share-based compensation",
+          "canonical_item": "share_based_payments",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+          "label_origin": "AI-assisted; pending independent human review"
+        }
+      ],
+      "false_positives": [],
+      "by_target_level": {
+        "direct": {
+          "counts": {
+            "matched": 6,
+            "expected": 12,
+            "missing": 6
+          },
+          "recall": 0.5,
+          "matched": [
+            {
+              "report_id": "xiaomi-fy2023",
+              "fiscal_period": "FY2023",
+              "pdf_page": 26,
+              "printed_page": "24",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+              "canonical_item": "amortisation_of_intangible_assets",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2023",
+              "fiscal_period": "FY2023",
+              "pdf_page": 26,
+              "printed_page": "24",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "net fair value changes on investments",
+              "canonical_item": "fair_value_changes",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2023",
+              "fiscal_period": "FY2023",
+              "pdf_page": 26,
+              "printed_page": "24",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "share-based compensation",
+              "canonical_item": "share_based_payments",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "fiscal_period": "FY2024",
+              "pdf_page": 30,
+              "printed_page": "28",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+              "canonical_item": "amortisation_of_intangible_assets",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "fiscal_period": "FY2024",
+              "pdf_page": 30,
+              "printed_page": "28",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "net fair value changes on investments",
+              "canonical_item": "fair_value_changes",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "fiscal_period": "FY2024",
+              "pdf_page": 30,
+              "printed_page": "28",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "share-based compensation",
+              "canonical_item": "share_based_payments",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+              "label_origin": "AI-assisted; pending independent human review"
+            }
+          ],
+          "missing": [
+            {
+              "report_id": "xiaomi-fy2023",
+              "fiscal_period": "FY2023",
+              "pdf_page": 27,
+              "printed_page": "25",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+              "canonical_item": "amortisation_of_intangible_assets",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. Same page also gives FY2022 comparison.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2023",
+              "fiscal_period": "FY2023",
+              "pdf_page": 27,
+              "printed_page": "25",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "Net fair value changes on investments",
+              "canonical_item": "fair_value_changes",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. Same page also gives FY2022 comparison.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2023",
+              "fiscal_period": "FY2023",
+              "pdf_page": 27,
+              "printed_page": "25",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "Share-based compensation",
+              "canonical_item": "share_based_payments",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. Same page also gives FY2022 comparison.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "fiscal_period": "FY2023",
+              "pdf_page": 31,
+              "printed_page": "29",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+              "canonical_item": "amortisation_of_intangible_assets",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "fiscal_period": "FY2023",
+              "pdf_page": 31,
+              "printed_page": "29",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "Net fair value changes on investments",
+              "canonical_item": "fair_value_changes",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "fiscal_period": "FY2023",
+              "pdf_page": 31,
+              "printed_page": "29",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "Share-based compensation",
+              "canonical_item": "share_based_payments",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+              "label_origin": "AI-assisted; pending independent human review"
+            }
+          ]
+        },
+        "nested": {
+          "counts": {
+            "matched": 0,
+            "expected": 2,
+            "missing": 2
+          },
+          "recall": 0.0,
+          "matched": [],
+          "missing": [
+            {
+              "report_id": "xiaomi-fy2023",
+              "fiscal_period": "FY2023",
+              "pdf_page": 27,
+              "printed_page": "25",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "the impairment provision for investments",
+              "canonical_item": "impairment_losses",
+              "support_status": "supported",
+              "target_level": "nested",
+              "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (1); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "fiscal_period": "FY2024",
+              "pdf_page": 31,
+              "printed_page": "29",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "the impairment provision for investments",
+              "canonical_item": "impairment_losses",
+              "support_status": "supported",
+              "target_level": "nested",
+              "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (2); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+              "label_origin": "AI-assisted; pending independent human review"
+            }
+          ]
+        }
+      },
+      "report_item_set": {
+        "counts": {
+          "matched": 6,
+          "expected": 8,
+          "missing": 2
+        },
+        "recall": 0.75,
+        "matched": [
+          {
+            "report_id": "xiaomi-fy2023",
+            "canonical_item": "amortisation_of_intangible_assets",
+            "target_level": "direct"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "canonical_item": "fair_value_changes",
+            "target_level": "direct"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "canonical_item": "share_based_payments",
+            "target_level": "direct"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "canonical_item": "amortisation_of_intangible_assets",
+            "target_level": "direct"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "canonical_item": "fair_value_changes",
+            "target_level": "direct"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "canonical_item": "share_based_payments",
+            "target_level": "direct"
+          }
+        ],
+        "missing": [
+          {
+            "report_id": "xiaomi-fy2023",
+            "canonical_item": "impairment_losses",
+            "target_level": "nested"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "canonical_item": "impairment_losses",
+            "target_level": "nested"
+          }
+        ],
+        "primary_key": [
+          "report_id",
+          "canonical_item",
+          "target_level"
+        ],
+        "by_target_level": {
+          "direct": {
+            "counts": {
+              "matched": 6,
+              "expected": 6,
+              "missing": 0
+            },
+            "recall": 1.0,
+            "matched": [
+              {
+                "report_id": "xiaomi-fy2023",
+                "canonical_item": "amortisation_of_intangible_assets",
+                "target_level": "direct"
+              },
+              {
+                "report_id": "xiaomi-fy2023",
+                "canonical_item": "fair_value_changes",
+                "target_level": "direct"
+              },
+              {
+                "report_id": "xiaomi-fy2023",
+                "canonical_item": "share_based_payments",
+                "target_level": "direct"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "canonical_item": "amortisation_of_intangible_assets",
+                "target_level": "direct"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "canonical_item": "fair_value_changes",
+                "target_level": "direct"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "canonical_item": "share_based_payments",
+                "target_level": "direct"
+              }
+            ],
+            "missing": []
+          },
+          "nested": {
+            "counts": {
+              "matched": 0,
+              "expected": 2,
+              "missing": 2
+            },
+            "recall": 0.0,
+            "matched": [],
+            "missing": [
+              {
+                "report_id": "xiaomi-fy2023",
+                "canonical_item": "impairment_losses",
+                "target_level": "nested"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "canonical_item": "impairment_losses",
+                "target_level": "nested"
+              }
+            ]
+          }
+        }
+      },
+      "review_counts": {
+        "label_rows": 36,
+        "unique_supported_keys": 14,
+        "support_status": {
+          "negative": 14,
+          "supported": 14,
+          "unsupported": 8
+        },
+        "target_level": {
+          "negative": 14,
+          "direct": 20,
+          "nested": 2
+        },
+        "reviewed_pages": 16
+      },
+      "candidate_counts": {
+        "raw_rows": 6,
+        "unique_keys": 6,
+        "scored_keys": 6,
+        "unreviewed_keys": 0,
+        "outside_dictionary_keys": 0
+      },
+      "scoring_pages": {
+        "xiaomi-fy2023": [
+          10,
+          17,
+          26,
+          27,
+          28,
+          215,
+          267,
+          268
+        ],
+        "xiaomi-fy2024": [
+          10,
+          19,
+          30,
+          31,
+          32,
+          244,
+          299,
+          300
+        ]
+      },
+      "outside_reviewed_pages": {
+        "xiaomi-fy2023": [],
+        "xiaomi-fy2024": []
+      },
+      "unreviewed": [],
+      "outside_dictionary_labels": [
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 26,
+          "printed_page": "24",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "changes of value of financial liabilities to fund investors",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Explicit group adjustment outside the six canonical concepts. Do not conflate liability valuation with the separately named investment fair-value adjustment.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 26,
+          "printed_page": "24",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "income tax effects of non-IFRS adjustments",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Explicit group adjustment outside the six canonical concepts; this is the tax effect of adjustments, not ordinary income tax expense.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 27,
+          "printed_page": "25",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Changes of value of financial liabilities to fund investors",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Group reconciliation FY2023 signed adjustment 410,946 RMB thousand; named adjustment is outside the six canonical concepts. FY2022 comparison is (583,862).",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 27,
+          "printed_page": "25",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Income tax effects",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Group reconciliation FY2023 signed adjustment 645,643 RMB thousand; outside the six canonical concepts. FY2022 comparison is (417,894).",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2024",
+          "pdf_page": 30,
+          "printed_page": "28",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "changes of value of financial liabilities to investors",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Explicit group adjustment outside the six canonical concepts. Do not conflate liability valuation with the separately named investment fair-value adjustment.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2024",
+          "pdf_page": 30,
+          "printed_page": "28",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "income tax effects of non-IFRS adjustments",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Explicit group adjustment outside the six canonical concepts; this is the tax effect of adjustments, not ordinary income tax expense.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2023",
+          "pdf_page": 31,
+          "printed_page": "29",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Changes of value of financial liabilities to investors",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Group reconciliation FY2023 signed adjustment 410,946 RMB thousand; named adjustment is outside the six canonical concepts. FY2024 current-period amount (1,243,607) is on PDF page 30.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2023",
+          "pdf_page": 31,
+          "printed_page": "29",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Income tax effects",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Group reconciliation FY2023 signed adjustment 645,643 RMB thousand; outside the six canonical concepts. FY2024 current-period amount (148,320) is on PDF page 30.",
+          "label_origin": "AI-assisted; pending independent human review"
+        }
+      ],
+      "outside_dictionary_predictions": []
+    }
+  },
+  "baseline": {
+    "primary_key": [
+      "report_id",
+      "pdf_page",
+      "canonical_item"
+    ],
+    "scope": "Only pages represented in review_labels.csv are scored; other output pages are unreviewed.",
+    "supported_scope": "All supported labels, including nested components, enter total TP/FP/FN.",
+    "stratum_policy": "Direct and nested strata report recall only; all false positives remain in the primary page-occurrence score because candidates do not predict a target level.",
+    "report_item_set_policy": "Deduplicate supported (report_id, canonical_item, target_level) keys; a set item is recalled only if at least one supported page occurrence is matched. Page-occurrence errors remain in the primary score.",
+    "dictionary_scope": [
+      "acquisition_related_expenses",
+      "amortisation_of_intangible_assets",
+      "fair_value_changes",
+      "impairment_losses",
+      "listing_expenses",
+      "share_based_payments"
+    ],
+    "by_report": {
+      "xiaomi-fy2023": {
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 7
+        },
+        "precision": null,
+        "recall": 0.0,
+        "matched": [],
+        "missing": [
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 26,
+            "printed_page": "24",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+            "canonical_item": "amortisation_of_intangible_assets",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 26,
+            "printed_page": "24",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "net fair value changes on investments",
+            "canonical_item": "fair_value_changes",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 26,
+            "printed_page": "24",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "share-based compensation",
+            "canonical_item": "share_based_payments",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 27,
+            "printed_page": "25",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+            "canonical_item": "amortisation_of_intangible_assets",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. Same page also gives FY2022 comparison.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 27,
+            "printed_page": "25",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Net fair value changes on investments",
+            "canonical_item": "fair_value_changes",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. Same page also gives FY2022 comparison.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 27,
+            "printed_page": "25",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "the impairment provision for investments",
+            "canonical_item": "impairment_losses",
+            "support_status": "supported",
+            "target_level": "nested",
+            "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (1); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 27,
+            "printed_page": "25",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Share-based compensation",
+            "canonical_item": "share_based_payments",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. Same page also gives FY2022 comparison.",
+            "label_origin": "AI-assisted; pending independent human review"
+          }
+        ],
+        "false_positives": [],
+        "by_target_level": {
+          "direct": {
+            "counts": {
+              "matched": 0,
+              "expected": 6,
+              "missing": 6
+            },
+            "recall": 0.0,
+            "matched": [],
+            "missing": [
+              {
+                "report_id": "xiaomi-fy2023",
+                "fiscal_period": "FY2023",
+                "pdf_page": 26,
+                "printed_page": "24",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+                "canonical_item": "amortisation_of_intangible_assets",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2023",
+                "fiscal_period": "FY2023",
+                "pdf_page": 26,
+                "printed_page": "24",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "net fair value changes on investments",
+                "canonical_item": "fair_value_changes",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2023",
+                "fiscal_period": "FY2023",
+                "pdf_page": 26,
+                "printed_page": "24",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "share-based compensation",
+                "canonical_item": "share_based_payments",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2023",
+                "fiscal_period": "FY2023",
+                "pdf_page": 27,
+                "printed_page": "25",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+                "canonical_item": "amortisation_of_intangible_assets",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. Same page also gives FY2022 comparison.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2023",
+                "fiscal_period": "FY2023",
+                "pdf_page": 27,
+                "printed_page": "25",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "Net fair value changes on investments",
+                "canonical_item": "fair_value_changes",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. Same page also gives FY2022 comparison.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2023",
+                "fiscal_period": "FY2023",
+                "pdf_page": 27,
+                "printed_page": "25",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "Share-based compensation",
+                "canonical_item": "share_based_payments",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. Same page also gives FY2022 comparison.",
+                "label_origin": "AI-assisted; pending independent human review"
+              }
+            ]
+          },
+          "nested": {
+            "counts": {
+              "matched": 0,
+              "expected": 1,
+              "missing": 1
+            },
+            "recall": 0.0,
+            "matched": [],
+            "missing": [
+              {
+                "report_id": "xiaomi-fy2023",
+                "fiscal_period": "FY2023",
+                "pdf_page": 27,
+                "printed_page": "25",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "the impairment provision for investments",
+                "canonical_item": "impairment_losses",
+                "support_status": "supported",
+                "target_level": "nested",
+                "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (1); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+                "label_origin": "AI-assisted; pending independent human review"
+              }
+            ]
+          }
+        },
+        "report_item_set": {
+          "counts": {
+            "matched": 0,
+            "expected": 4,
+            "missing": 4
+          },
+          "recall": 0.0,
+          "matched": [],
+          "missing": [
+            {
+              "report_id": "xiaomi-fy2023",
+              "canonical_item": "amortisation_of_intangible_assets",
+              "target_level": "direct"
+            },
+            {
+              "report_id": "xiaomi-fy2023",
+              "canonical_item": "fair_value_changes",
+              "target_level": "direct"
+            },
+            {
+              "report_id": "xiaomi-fy2023",
+              "canonical_item": "impairment_losses",
+              "target_level": "nested"
+            },
+            {
+              "report_id": "xiaomi-fy2023",
+              "canonical_item": "share_based_payments",
+              "target_level": "direct"
+            }
+          ],
+          "primary_key": [
+            "report_id",
+            "canonical_item",
+            "target_level"
+          ],
+          "by_target_level": {
+            "direct": {
+              "counts": {
+                "matched": 0,
+                "expected": 3,
+                "missing": 3
+              },
+              "recall": 0.0,
+              "matched": [],
+              "missing": [
+                {
+                  "report_id": "xiaomi-fy2023",
+                  "canonical_item": "amortisation_of_intangible_assets",
+                  "target_level": "direct"
+                },
+                {
+                  "report_id": "xiaomi-fy2023",
+                  "canonical_item": "fair_value_changes",
+                  "target_level": "direct"
+                },
+                {
+                  "report_id": "xiaomi-fy2023",
+                  "canonical_item": "share_based_payments",
+                  "target_level": "direct"
+                }
+              ]
+            },
+            "nested": {
+              "counts": {
+                "matched": 0,
+                "expected": 1,
+                "missing": 1
+              },
+              "recall": 0.0,
+              "matched": [],
+              "missing": [
+                {
+                  "report_id": "xiaomi-fy2023",
+                  "canonical_item": "impairment_losses",
+                  "target_level": "nested"
+                }
+              ]
+            }
+          }
+        },
+        "review_counts": {
+          "label_rows": 18,
+          "unique_supported_keys": 7,
+          "support_status": {
+            "negative": 7,
+            "supported": 7,
+            "unsupported": 4
+          },
+          "target_level": {
+            "negative": 7,
+            "direct": 10,
+            "nested": 1
+          },
+          "reviewed_pages": 8
+        },
+        "candidate_counts": {
+          "raw_rows": 0,
+          "unique_keys": 0,
+          "scored_keys": 0,
+          "unreviewed_keys": 0,
+          "outside_dictionary_keys": 0
+        },
+        "scoring_pages": {
+          "xiaomi-fy2023": [
+            10,
+            17,
+            26,
+            27,
+            28,
+            215,
+            267,
+            268
+          ]
+        },
+        "outside_reviewed_pages": {
+          "xiaomi-fy2023": []
+        },
+        "unreviewed": [],
+        "outside_dictionary_labels": [
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 26,
+            "printed_page": "24",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "changes of value of financial liabilities to fund investors",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Explicit group adjustment outside the six canonical concepts. Do not conflate liability valuation with the separately named investment fair-value adjustment.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 26,
+            "printed_page": "24",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "income tax effects of non-IFRS adjustments",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Explicit group adjustment outside the six canonical concepts; this is the tax effect of adjustments, not ordinary income tax expense.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 27,
+            "printed_page": "25",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Changes of value of financial liabilities to fund investors",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Group reconciliation FY2023 signed adjustment 410,946 RMB thousand; named adjustment is outside the six canonical concepts. FY2022 comparison is (583,862).",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "fiscal_period": "FY2023",
+            "pdf_page": 27,
+            "printed_page": "25",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Income tax effects",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Group reconciliation FY2023 signed adjustment 645,643 RMB thousand; outside the six canonical concepts. FY2022 comparison is (417,894).",
+            "label_origin": "AI-assisted; pending independent human review"
+          }
+        ],
+        "outside_dictionary_predictions": []
+      },
+      "xiaomi-fy2024": {
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 7
+        },
+        "precision": null,
+        "recall": 0.0,
+        "matched": [],
+        "missing": [
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2024",
+            "pdf_page": 30,
+            "printed_page": "28",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+            "canonical_item": "amortisation_of_intangible_assets",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2024",
+            "pdf_page": 30,
+            "printed_page": "28",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "net fair value changes on investments",
+            "canonical_item": "fair_value_changes",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2024",
+            "pdf_page": 30,
+            "printed_page": "28",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "share-based compensation",
+            "canonical_item": "share_based_payments",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2023",
+            "pdf_page": 31,
+            "printed_page": "29",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+            "canonical_item": "amortisation_of_intangible_assets",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2023",
+            "pdf_page": 31,
+            "printed_page": "29",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Net fair value changes on investments",
+            "canonical_item": "fair_value_changes",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2024",
+            "pdf_page": 31,
+            "printed_page": "29",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "the impairment provision for investments",
+            "canonical_item": "impairment_losses",
+            "support_status": "supported",
+            "target_level": "nested",
+            "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (2); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2023",
+            "pdf_page": 31,
+            "printed_page": "29",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Share-based compensation",
+            "canonical_item": "share_based_payments",
+            "support_status": "supported",
+            "target_level": "direct",
+            "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+            "label_origin": "AI-assisted; pending independent human review"
+          }
+        ],
+        "false_positives": [],
+        "by_target_level": {
+          "direct": {
+            "counts": {
+              "matched": 0,
+              "expected": 6,
+              "missing": 6
+            },
+            "recall": 0.0,
+            "matched": [],
+            "missing": [
+              {
+                "report_id": "xiaomi-fy2024",
+                "fiscal_period": "FY2024",
+                "pdf_page": 30,
+                "printed_page": "28",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+                "canonical_item": "amortisation_of_intangible_assets",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "fiscal_period": "FY2024",
+                "pdf_page": 30,
+                "printed_page": "28",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "net fair value changes on investments",
+                "canonical_item": "fair_value_changes",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "fiscal_period": "FY2024",
+                "pdf_page": 30,
+                "printed_page": "28",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "share-based compensation",
+                "canonical_item": "share_based_payments",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "fiscal_period": "FY2023",
+                "pdf_page": 31,
+                "printed_page": "29",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+                "canonical_item": "amortisation_of_intangible_assets",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "fiscal_period": "FY2023",
+                "pdf_page": 31,
+                "printed_page": "29",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "Net fair value changes on investments",
+                "canonical_item": "fair_value_changes",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+                "label_origin": "AI-assisted; pending independent human review"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "fiscal_period": "FY2023",
+                "pdf_page": 31,
+                "printed_page": "29",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "Share-based compensation",
+                "canonical_item": "share_based_payments",
+                "support_status": "supported",
+                "target_level": "direct",
+                "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+                "label_origin": "AI-assisted; pending independent human review"
+              }
+            ]
+          },
+          "nested": {
+            "counts": {
+              "matched": 0,
+              "expected": 1,
+              "missing": 1
+            },
+            "recall": 0.0,
+            "matched": [],
+            "missing": [
+              {
+                "report_id": "xiaomi-fy2024",
+                "fiscal_period": "FY2024",
+                "pdf_page": 31,
+                "printed_page": "29",
+                "metric_text": "Adjusted Net Profit",
+                "adjustment_text": "the impairment provision for investments",
+                "canonical_item": "impairment_losses",
+                "support_status": "supported",
+                "target_level": "nested",
+                "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (2); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+                "label_origin": "AI-assisted; pending independent human review"
+              }
+            ]
+          }
+        },
+        "report_item_set": {
+          "counts": {
+            "matched": 0,
+            "expected": 4,
+            "missing": 4
+          },
+          "recall": 0.0,
+          "matched": [],
+          "missing": [
+            {
+              "report_id": "xiaomi-fy2024",
+              "canonical_item": "amortisation_of_intangible_assets",
+              "target_level": "direct"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "canonical_item": "fair_value_changes",
+              "target_level": "direct"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "canonical_item": "impairment_losses",
+              "target_level": "nested"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "canonical_item": "share_based_payments",
+              "target_level": "direct"
+            }
+          ],
+          "primary_key": [
+            "report_id",
+            "canonical_item",
+            "target_level"
+          ],
+          "by_target_level": {
+            "direct": {
+              "counts": {
+                "matched": 0,
+                "expected": 3,
+                "missing": 3
+              },
+              "recall": 0.0,
+              "matched": [],
+              "missing": [
+                {
+                  "report_id": "xiaomi-fy2024",
+                  "canonical_item": "amortisation_of_intangible_assets",
+                  "target_level": "direct"
+                },
+                {
+                  "report_id": "xiaomi-fy2024",
+                  "canonical_item": "fair_value_changes",
+                  "target_level": "direct"
+                },
+                {
+                  "report_id": "xiaomi-fy2024",
+                  "canonical_item": "share_based_payments",
+                  "target_level": "direct"
+                }
+              ]
+            },
+            "nested": {
+              "counts": {
+                "matched": 0,
+                "expected": 1,
+                "missing": 1
+              },
+              "recall": 0.0,
+              "matched": [],
+              "missing": [
+                {
+                  "report_id": "xiaomi-fy2024",
+                  "canonical_item": "impairment_losses",
+                  "target_level": "nested"
+                }
+              ]
+            }
+          }
+        },
+        "review_counts": {
+          "label_rows": 18,
+          "unique_supported_keys": 7,
+          "support_status": {
+            "negative": 7,
+            "supported": 7,
+            "unsupported": 4
+          },
+          "target_level": {
+            "negative": 7,
+            "direct": 10,
+            "nested": 1
+          },
+          "reviewed_pages": 8
+        },
+        "candidate_counts": {
+          "raw_rows": 0,
+          "unique_keys": 0,
+          "scored_keys": 0,
+          "unreviewed_keys": 0,
+          "outside_dictionary_keys": 0
+        },
+        "scoring_pages": {
+          "xiaomi-fy2024": [
+            10,
+            19,
+            30,
+            31,
+            32,
+            244,
+            299,
+            300
+          ]
+        },
+        "outside_reviewed_pages": {
+          "xiaomi-fy2024": []
+        },
+        "unreviewed": [],
+        "outside_dictionary_labels": [
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2024",
+            "pdf_page": 30,
+            "printed_page": "28",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "changes of value of financial liabilities to investors",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Explicit group adjustment outside the six canonical concepts. Do not conflate liability valuation with the separately named investment fair-value adjustment.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2024",
+            "pdf_page": 30,
+            "printed_page": "28",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "income tax effects of non-IFRS adjustments",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Explicit group adjustment outside the six canonical concepts; this is the tax effect of adjustments, not ordinary income tax expense.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2023",
+            "pdf_page": 31,
+            "printed_page": "29",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Changes of value of financial liabilities to investors",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Group reconciliation FY2023 signed adjustment 410,946 RMB thousand; named adjustment is outside the six canonical concepts. FY2024 current-period amount (1,243,607) is on PDF page 30.",
+            "label_origin": "AI-assisted; pending independent human review"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "fiscal_period": "FY2023",
+            "pdf_page": 31,
+            "printed_page": "29",
+            "metric_text": "Adjusted Net Profit",
+            "adjustment_text": "Income tax effects",
+            "canonical_item": "",
+            "support_status": "unsupported",
+            "target_level": "direct",
+            "notes": "Group reconciliation FY2023 signed adjustment 645,643 RMB thousand; outside the six canonical concepts. FY2024 current-period amount (148,320) is on PDF page 30.",
+            "label_origin": "AI-assisted; pending independent human review"
+          }
+        ],
+        "outside_dictionary_predictions": []
+      }
+    },
+    "total": {
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 14
+      },
+      "precision": null,
+      "recall": 0.0,
+      "matched": [],
+      "missing": [
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 26,
+          "printed_page": "24",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+          "canonical_item": "amortisation_of_intangible_assets",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 26,
+          "printed_page": "24",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "net fair value changes on investments",
+          "canonical_item": "fair_value_changes",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 26,
+          "printed_page": "24",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "share-based compensation",
+          "canonical_item": "share_based_payments",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 27,
+          "printed_page": "25",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+          "canonical_item": "amortisation_of_intangible_assets",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. Same page also gives FY2022 comparison.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 27,
+          "printed_page": "25",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Net fair value changes on investments",
+          "canonical_item": "fair_value_changes",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. Same page also gives FY2022 comparison.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 27,
+          "printed_page": "25",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "the impairment provision for investments",
+          "canonical_item": "impairment_losses",
+          "support_status": "supported",
+          "target_level": "nested",
+          "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (1); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 27,
+          "printed_page": "25",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Share-based compensation",
+          "canonical_item": "share_based_payments",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. Same page also gives FY2022 comparison.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2024",
+          "pdf_page": 30,
+          "printed_page": "28",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+          "canonical_item": "amortisation_of_intangible_assets",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2024",
+          "pdf_page": 30,
+          "printed_page": "28",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "net fair value changes on investments",
+          "canonical_item": "fair_value_changes",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2024",
+          "pdf_page": 30,
+          "printed_page": "28",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "share-based compensation",
+          "canonical_item": "share_based_payments",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2023",
+          "pdf_page": 31,
+          "printed_page": "29",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+          "canonical_item": "amortisation_of_intangible_assets",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2023",
+          "pdf_page": 31,
+          "printed_page": "29",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Net fair value changes on investments",
+          "canonical_item": "fair_value_changes",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2024",
+          "pdf_page": 31,
+          "printed_page": "29",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "the impairment provision for investments",
+          "canonical_item": "impairment_losses",
+          "support_status": "supported",
+          "target_level": "nested",
+          "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (2); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2023",
+          "pdf_page": 31,
+          "printed_page": "29",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Share-based compensation",
+          "canonical_item": "share_based_payments",
+          "support_status": "supported",
+          "target_level": "direct",
+          "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+          "label_origin": "AI-assisted; pending independent human review"
+        }
+      ],
+      "false_positives": [],
+      "by_target_level": {
+        "direct": {
+          "counts": {
+            "matched": 0,
+            "expected": 12,
+            "missing": 12
+          },
+          "recall": 0.0,
+          "matched": [],
+          "missing": [
+            {
+              "report_id": "xiaomi-fy2023",
+              "fiscal_period": "FY2023",
+              "pdf_page": 26,
+              "printed_page": "24",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+              "canonical_item": "amortisation_of_intangible_assets",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2023",
+              "fiscal_period": "FY2023",
+              "pdf_page": 26,
+              "printed_page": "24",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "net fair value changes on investments",
+              "canonical_item": "fair_value_changes",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2023",
+              "fiscal_period": "FY2023",
+              "pdf_page": 26,
+              "printed_page": "24",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "share-based compensation",
+              "canonical_item": "share_based_payments",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2023",
+              "fiscal_period": "FY2023",
+              "pdf_page": 27,
+              "printed_page": "25",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+              "canonical_item": "amortisation_of_intangible_assets",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. Same page also gives FY2022 comparison.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2023",
+              "fiscal_period": "FY2023",
+              "pdf_page": 27,
+              "printed_page": "25",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "Net fair value changes on investments",
+              "canonical_item": "fair_value_changes",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. Same page also gives FY2022 comparison.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2023",
+              "fiscal_period": "FY2023",
+              "pdf_page": 27,
+              "printed_page": "25",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "Share-based compensation",
+              "canonical_item": "share_based_payments",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. Same page also gives FY2022 comparison.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "fiscal_period": "FY2024",
+              "pdf_page": 30,
+              "printed_page": "28",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "amortization of intangible assets resulting from acquisitions",
+              "canonical_item": "amortisation_of_intangible_assets",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "fiscal_period": "FY2024",
+              "pdf_page": 30,
+              "printed_page": "28",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "net fair value changes on investments",
+              "canonical_item": "fair_value_changes",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "fiscal_period": "FY2024",
+              "pdf_page": 30,
+              "printed_page": "28",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "share-based compensation",
+              "canonical_item": "share_based_payments",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Explicit group definition: profit adjusted by adding back the named item. Definition covers the report year; signed amounts are in the reconciliation.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "fiscal_period": "FY2023",
+              "pdf_page": 31,
+              "printed_page": "29",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "Amortization of intangible assets resulting from acquisitions",
+              "canonical_item": "amortisation_of_intangible_assets",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 144,008 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "fiscal_period": "FY2023",
+              "pdf_page": 31,
+              "printed_page": "29",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "Net fair value changes on investments",
+              "canonical_item": "fair_value_changes",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment (2,746,397) RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "fiscal_period": "FY2023",
+              "pdf_page": 31,
+              "printed_page": "29",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "Share-based compensation",
+              "canonical_item": "share_based_payments",
+              "support_status": "supported",
+              "target_level": "direct",
+              "notes": "Group Non-IFRS reconciliation continued from preceding definition page; FY2023 signed adjustment 3,344,357 RMB thousand. This table is the FY2023 comparison in the FY2024 report, not the FY2024 current-period amount.",
+              "label_origin": "AI-assisted; pending independent human review"
+            }
+          ]
+        },
+        "nested": {
+          "counts": {
+            "matched": 0,
+            "expected": 2,
+            "missing": 2
+          },
+          "recall": 0.0,
+          "matched": [],
+          "missing": [
+            {
+              "report_id": "xiaomi-fy2023",
+              "fiscal_period": "FY2023",
+              "pdf_page": 27,
+              "printed_page": "25",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "the impairment provision for investments",
+              "canonical_item": "impairment_losses",
+              "support_status": "supported",
+              "target_level": "nested",
+              "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (1); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+              "label_origin": "AI-assisted; pending independent human review"
+            },
+            {
+              "report_id": "xiaomi-fy2024",
+              "fiscal_period": "FY2024",
+              "pdf_page": 31,
+              "printed_page": "29",
+              "metric_text": "Adjusted Net Profit",
+              "adjustment_text": "the impairment provision for investments",
+              "canonical_item": "impairment_losses",
+              "support_status": "supported",
+              "target_level": "nested",
+              "notes": "Semantic mapping of an investment impairment provision to impairment_losses. Explicit component of the net fair value changes on investments adjustment in reconciliation note (2); not a separately quantified top-level adjustment. Footnote applies to the report year and comparison year.",
+              "label_origin": "AI-assisted; pending independent human review"
+            }
+          ]
+        }
+      },
+      "report_item_set": {
+        "counts": {
+          "matched": 0,
+          "expected": 8,
+          "missing": 8
+        },
+        "recall": 0.0,
+        "matched": [],
+        "missing": [
+          {
+            "report_id": "xiaomi-fy2023",
+            "canonical_item": "amortisation_of_intangible_assets",
+            "target_level": "direct"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "canonical_item": "fair_value_changes",
+            "target_level": "direct"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "canonical_item": "impairment_losses",
+            "target_level": "nested"
+          },
+          {
+            "report_id": "xiaomi-fy2023",
+            "canonical_item": "share_based_payments",
+            "target_level": "direct"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "canonical_item": "amortisation_of_intangible_assets",
+            "target_level": "direct"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "canonical_item": "fair_value_changes",
+            "target_level": "direct"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "canonical_item": "impairment_losses",
+            "target_level": "nested"
+          },
+          {
+            "report_id": "xiaomi-fy2024",
+            "canonical_item": "share_based_payments",
+            "target_level": "direct"
+          }
+        ],
+        "primary_key": [
+          "report_id",
+          "canonical_item",
+          "target_level"
+        ],
+        "by_target_level": {
+          "direct": {
+            "counts": {
+              "matched": 0,
+              "expected": 6,
+              "missing": 6
+            },
+            "recall": 0.0,
+            "matched": [],
+            "missing": [
+              {
+                "report_id": "xiaomi-fy2023",
+                "canonical_item": "amortisation_of_intangible_assets",
+                "target_level": "direct"
+              },
+              {
+                "report_id": "xiaomi-fy2023",
+                "canonical_item": "fair_value_changes",
+                "target_level": "direct"
+              },
+              {
+                "report_id": "xiaomi-fy2023",
+                "canonical_item": "share_based_payments",
+                "target_level": "direct"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "canonical_item": "amortisation_of_intangible_assets",
+                "target_level": "direct"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "canonical_item": "fair_value_changes",
+                "target_level": "direct"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "canonical_item": "share_based_payments",
+                "target_level": "direct"
+              }
+            ]
+          },
+          "nested": {
+            "counts": {
+              "matched": 0,
+              "expected": 2,
+              "missing": 2
+            },
+            "recall": 0.0,
+            "matched": [],
+            "missing": [
+              {
+                "report_id": "xiaomi-fy2023",
+                "canonical_item": "impairment_losses",
+                "target_level": "nested"
+              },
+              {
+                "report_id": "xiaomi-fy2024",
+                "canonical_item": "impairment_losses",
+                "target_level": "nested"
+              }
+            ]
+          }
+        }
+      },
+      "review_counts": {
+        "label_rows": 36,
+        "unique_supported_keys": 14,
+        "support_status": {
+          "negative": 14,
+          "supported": 14,
+          "unsupported": 8
+        },
+        "target_level": {
+          "negative": 14,
+          "direct": 20,
+          "nested": 2
+        },
+        "reviewed_pages": 16
+      },
+      "candidate_counts": {
+        "raw_rows": 0,
+        "unique_keys": 0,
+        "scored_keys": 0,
+        "unreviewed_keys": 0,
+        "outside_dictionary_keys": 0
+      },
+      "scoring_pages": {
+        "xiaomi-fy2023": [
+          10,
+          17,
+          26,
+          27,
+          28,
+          215,
+          267,
+          268
+        ],
+        "xiaomi-fy2024": [
+          10,
+          19,
+          30,
+          31,
+          32,
+          244,
+          299,
+          300
+        ]
+      },
+      "outside_reviewed_pages": {
+        "xiaomi-fy2023": [],
+        "xiaomi-fy2024": []
+      },
+      "unreviewed": [],
+      "outside_dictionary_labels": [
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 26,
+          "printed_page": "24",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "changes of value of financial liabilities to fund investors",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Explicit group adjustment outside the six canonical concepts. Do not conflate liability valuation with the separately named investment fair-value adjustment.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 26,
+          "printed_page": "24",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "income tax effects of non-IFRS adjustments",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Explicit group adjustment outside the six canonical concepts; this is the tax effect of adjustments, not ordinary income tax expense.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 27,
+          "printed_page": "25",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Changes of value of financial liabilities to fund investors",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Group reconciliation FY2023 signed adjustment 410,946 RMB thousand; named adjustment is outside the six canonical concepts. FY2022 comparison is (583,862).",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2023",
+          "fiscal_period": "FY2023",
+          "pdf_page": 27,
+          "printed_page": "25",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Income tax effects",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Group reconciliation FY2023 signed adjustment 645,643 RMB thousand; outside the six canonical concepts. FY2022 comparison is (417,894).",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2024",
+          "pdf_page": 30,
+          "printed_page": "28",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "changes of value of financial liabilities to investors",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Explicit group adjustment outside the six canonical concepts. Do not conflate liability valuation with the separately named investment fair-value adjustment.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2024",
+          "pdf_page": 30,
+          "printed_page": "28",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "income tax effects of non-IFRS adjustments",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Explicit group adjustment outside the six canonical concepts; this is the tax effect of adjustments, not ordinary income tax expense.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2023",
+          "pdf_page": 31,
+          "printed_page": "29",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Changes of value of financial liabilities to investors",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Group reconciliation FY2023 signed adjustment 410,946 RMB thousand; named adjustment is outside the six canonical concepts. FY2024 current-period amount (1,243,607) is on PDF page 30.",
+          "label_origin": "AI-assisted; pending independent human review"
+        },
+        {
+          "report_id": "xiaomi-fy2024",
+          "fiscal_period": "FY2023",
+          "pdf_page": 31,
+          "printed_page": "29",
+          "metric_text": "Adjusted Net Profit",
+          "adjustment_text": "Income tax effects",
+          "canonical_item": "",
+          "support_status": "unsupported",
+          "target_level": "direct",
+          "notes": "Group reconciliation FY2023 signed adjustment 645,643 RMB thousand; outside the six canonical concepts. FY2024 current-period amount (148,320) is on PDF page 30.",
+          "label_origin": "AI-assisted; pending independent human review"
+        }
+      ],
+      "outside_dictionary_predictions": []
+    }
+  },
+  "labels_sha256": "601a4c214ece164554b372c962876a436d16e6063dd357d707dc1476e15cc430",
+  "human_review_time_seconds": null
+}

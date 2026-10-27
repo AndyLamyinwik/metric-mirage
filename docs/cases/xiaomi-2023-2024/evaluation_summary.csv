@@ -1,0 +1,13 @@
+version,scope,target_level,tp,fp,fn,matched,expected,missing,precision,recall,notes
+baseline,page_occurrence,all,0,0,14,,,,,0.0,Bounded reviewed pages; includes supported nested impairment component.
+baseline,page_occurrence,direct,,,,0,12,12,,0.0,Recall only; false positives are reported in the primary all-level score.
+baseline,page_occurrence,nested,,,,0,2,2,,0.0,Recall only; false positives are reported in the primary all-level score.
+baseline,report_concept,all,,,,0,8,8,,0.0,Deduplicated report_id/canonical_item/target_level; not a full-formula accuracy score.
+baseline,report_concept,direct,,,,0,6,6,,0.0,
+baseline,report_concept,nested,,,,0,2,2,,0.0,
+current,page_occurrence,all,6,0,8,,,,1.0,0.42857142857142855,Bounded reviewed pages; includes supported nested impairment component.
+current,page_occurrence,direct,,,,6,12,6,,0.5,Recall only; false positives are reported in the primary all-level score.
+current,page_occurrence,nested,,,,0,2,2,,0.0,Recall only; false positives are reported in the primary all-level score.
+current,report_concept,all,,,,6,8,2,,0.75,Deduplicated report_id/canonical_item/target_level; not a full-formula accuracy score.
+current,report_concept,direct,,,,6,6,0,,1.0,
+current,report_concept,nested,,,,0,2,2,,0.0,

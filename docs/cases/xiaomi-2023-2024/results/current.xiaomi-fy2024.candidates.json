@@ -1,0 +1,28 @@
+{
+  "ticker": "01810",
+  "company": "Xiaomi Corporation",
+  "fiscal_period": "FY2024",
+  "metric_name": "Adjusted Net Profit",
+  "source_name": "HKEXnews | Xiaomi FY2024 Annual Report | https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0424/2025042401119.pdf",
+  "file_sha256": "9fbb8a9baa8bb9b559ae3789080e56cd498ab1f0db6d8853ff2a63c598ccad11",
+  "candidates": [
+    {
+      "canonical_name": "share_based_payments",
+      "matched_text": "share-based compensation",
+      "page_number": 30,
+      "evidence_excerpt": "We define Adjusted \nNet Profit as profit for the year, as adjusted by adding back (i) share-based compensation"
+    },
+    {
+      "canonical_name": "fair_value_changes",
+      "matched_text": "net fair value changes \non investments",
+      "page_number": 30,
+      "evidence_excerpt": "We define Adjusted \nNet Profit as profit for the year, as adjusted by adding back (i) share-based compensation, (ii) net fair value changes \non investments"
+    },
+    {
+      "canonical_name": "amortisation_of_intangible_assets",
+      "matched_text": "amortization of intangible assets resulting from acquisitions",
+      "page_number": 30,
+      "evidence_excerpt": "We define Adjusted \nNet Profit as profit for the year, as adjusted by adding back (i) share-based compensation, (ii) net fair value changes \non investments, (iii) amortization of intangible assets resulting from acquisitions"
+    }
+  ]
+}

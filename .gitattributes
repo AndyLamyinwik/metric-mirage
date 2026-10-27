@@ -1,0 +1,4 @@
+# Preserve the exact bytes of frozen labels and hash-bound case artifacts.
+docs/cases/xiaomi-2023-2024/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+# The generated report embeds exact PDF excerpts, including source whitespace.
+docs/cases/xiaomi-2023-2024/results/drift.md -whitespace

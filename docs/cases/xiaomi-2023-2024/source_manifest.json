@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "case_id": "xiaomi-2023-2024",
+  "metric_name": "Adjusted Net Profit",
+  "baseline_commit": "85e8429967d402b1572ca4ac5ed0cc9e34fa622a",
+  "reports": [
+    {
+      "report_id": "xiaomi-fy2023",
+      "ticker": "01810",
+      "company": "Xiaomi Corporation",
+      "fiscal_period": "FY2023",
+      "report_type": "annual",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2024/0425/2024042500842.pdf",
+      "issuer_url": "https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2024/04/25/5-36-08/2023%20Annual%20Report.pdf",
+      "sha256": "76e579dbc5c01372bef6efb8e4ae0e96ada17336a2b32b5714bc07506534aec3",
+      "size_bytes": 1541101,
+      "downloaded_at_utc": "2026-10-27T03:12:19.110405+00:00",
+      "pdf_pages": 347,
+      "source_name": "HKEXnews | Xiaomi FY2023 Annual Report | https://www.hkexnews.hk/listedco/listconews/sehk/2024/0425/2024042500842.pdf",
+      "local_filename": "FY2023.pdf"
+    },
+    {
+      "report_id": "xiaomi-fy2024",
+      "ticker": "01810",
+      "company": "Xiaomi Corporation",
+      "fiscal_period": "FY2024",
+      "report_type": "annual",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0424/2025042401119.pdf",
+      "issuer_url": "https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2025/04/24/5-27-15/%E8%8B%B1%E6%96%87.pdf",
+      "sha256": "9fbb8a9baa8bb9b559ae3789080e56cd498ab1f0db6d8853ff2a63c598ccad11",
+      "size_bytes": 3189669,
+      "downloaded_at_utc": "2026-10-27T03:12:19.138440+00:00",
+      "pdf_pages": 379,
+      "source_name": "HKEXnews | Xiaomi FY2024 Annual Report | https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0424/2025042401119.pdf",
+      "local_filename": "FY2024.pdf"
+    }
+  ],
+  "source_handling": "PDF files are downloaded from official public disclosure URLs for local research, excluded from Git, and not redistributed. No access restrictions were bypassed.",
+  "acquisition_note": "Issuer IR direct download returned HTTP 403 in this environment. The corresponding publicly accessible HKEX disclosure PDFs were obtained instead.",
+  "required_optional_dependency": "pypdf[fonts]; tested with pypdf 6.20.0 and fonttools 4.67.0",
+  "review_method": "AI-assisted source annotation followed by a separate AI verification pass. No independent human review or human timing study has been performed."
+}

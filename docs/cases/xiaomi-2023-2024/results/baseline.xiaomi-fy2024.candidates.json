@@ -1,0 +1,9 @@
+{
+  "ticker": "01810",
+  "company": "Xiaomi Corporation",
+  "fiscal_period": "FY2024",
+  "metric_name": "Adjusted Net Profit",
+  "source_name": "HKEXnews | Xiaomi FY2024 Annual Report | https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0424/2025042401119.pdf",
+  "file_sha256": "9fbb8a9baa8bb9b559ae3789080e56cd498ab1f0db6d8853ff2a63c598ccad11",
+  "candidates": []
+}

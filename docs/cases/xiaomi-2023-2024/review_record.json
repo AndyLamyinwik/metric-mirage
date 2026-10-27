@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "review_method": "AI-assisted source annotation and a separate AI verification pass",
+  "independent_human_review_performed": false,
+  "human_review_time_seconds": null,
+  "human_time_savings": null,
+  "frozen_labels_sha256": "601a4c214ece164554b372c962876a436d16e6063dd357d707dc1476e15cc430",
+  "frozen_protocol_sha256": "9c44df9bddfa9a13a49835e24dcde4f48651bc2f31bcab6fa4e84cecb828178d",
+  "reviewed_pdf_pages": {
+    "xiaomi-fy2023": [
+      10,
+      17,
+      26,
+      27,
+      28,
+      215,
+      267,
+      268
+    ],
+    "xiaomi-fy2024": [
+      10,
+      19,
+      30,
+      31,
+      32,
+      244,
+      299,
+      300
+    ]
+  },
+  "verification": {
+    "visual_source_pages_checked": 16,
+    "strict_pdf_pages_extracted": 726,
+    "candidate_entries_checked": 6,
+    "snapshot_entries_checked": 6,
+    "recorded_result_hashes_checked": 14,
+    "source_hashes_matched": true,
+    "definition_hashes_matched": true,
+    "candidate_excerpts_match_original_page": true,
+    "labels_unchanged_after_formal_run": true,
+    "comparison_period_scope_checked": true
+  },
+  "development_case_note": "The parser correction was motivated by these reports. Labels were frozen by a separate AI source review before the formal candidate run; this is not a blind held-out benchmark.",
+  "local_tests": {
+    "passed": 376,
+    "failed": 0,
+    "elapsed_seconds": 68.322,
+    "command": "python -m unittest discover -s tests -v"
+  }
+}

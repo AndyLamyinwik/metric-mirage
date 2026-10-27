@@ -1,0 +1,36 @@
+{
+  "method": "Independent strict pypdf extraction; exact matched_text and evidence_excerpt page substrings; all parser warnings are fatal.",
+  "reports": {
+    "xiaomi-fy2023": {
+      "pdf_pages": 347,
+      "confirmed_adjustments": [
+        "amortisation_of_intangible_assets",
+        "fair_value_changes",
+        "share_based_payments"
+      ],
+      "verified_pages": [
+        26
+      ],
+      "verified_evidence_entries": 3,
+      "report_sha256": "76e579dbc5c01372bef6efb8e4ae0e96ada17336a2b32b5714bc07506534aec3",
+      "definition_sha256": "f180d7d92cfacb3e974449e0adf89b195dd11f78d5d731b17f01ce54f4cc9c79",
+      "snapshot_sha256": "7ceab6e82814852b70bafdb11cedea7a295e725aa0c38469fcfa51a5935d47ca"
+    },
+    "xiaomi-fy2024": {
+      "pdf_pages": 379,
+      "confirmed_adjustments": [
+        "amortisation_of_intangible_assets",
+        "fair_value_changes",
+        "share_based_payments"
+      ],
+      "verified_pages": [
+        30
+      ],
+      "verified_evidence_entries": 3,
+      "report_sha256": "9fbb8a9baa8bb9b559ae3789080e56cd498ab1f0db6d8853ff2a63c598ccad11",
+      "definition_sha256": "9b5af8d11a1a5e27575eddd780ab26a6595e3b571d95112832bcba804db11aca",
+      "snapshot_sha256": "9966ee0f5a8bc8860217b4ac81b8e19bf7304a5d667c206aa0207a056f3184a2"
+    }
+  },
+  "verified_evidence_entries": 6
+}

@@ -38,6 +38,12 @@ The comparison describes changes in user-confirmed adjustment sets. It does not 
 
 Registration supports `annual`, `interim`, `annual_results`, and `interim_results`. Codes such as `700`, `0700.HK`, and `00700` normalize to `00700`; formatting validation does not verify a listing.
 
+## Real Report Case
+
+The [Xiaomi FY2023-FY2024 case study](docs/cases/xiaomi-2023-2024/README.md) follows two official English annual reports through source review, candidate extraction, explicit selection, evidence snapshots, and comparison. It includes frozen AI-assisted labels, results before and after a narrow parser correction, missed items, and reproduction instructions. The selected adjustment sets have no additions or removals; this does not establish that the complete financial formulas are identical.
+
+The case is a development example with a separate AI verification pass, not an independent human benchmark. Human review time was not measured. Source PDFs and the private registry stay outside Git; the case links to the official documents and records their hashes.
+
 ## Quick Start
 
 Requires **Python 3.11+**. From a source checkout, with your Python environment activated:
@@ -199,6 +205,12 @@ source .venv/bin/activate
 
 Then run `python -m pip install -e .` from the project root. Declared runtime dependencies are `pypdf`, Streamlit, and Plotly. No API key is needed. The root `app.py` is the source-checkout dashboard launcher; installed package APIs and the CLI are also usable outside the checkout.
 
+For the documented real-report case, install the optional PDF font support used by those reports:
+
+```sh
+python -m pip install -e ".[research]"
+```
+
 For development and local distribution builds:
 
 ```sh
@@ -239,7 +251,7 @@ Candidates remain separate from definitions until a user explicitly selects them
 - Snapshots are local captured evidence, not signed authenticity proofs or live-PDF verification.
 - The dashboard is a local single-user tool with no authentication or tenant isolation. Do not treat it as a public multi-user deployment.
 - Only local reports supplied under the user's processing rights are supported; reports are not automatically downloaded.
-- **Real-world PDF validation not performed**: the included fixtures and demo are synthetic, not evidence of performance on a particular issuer's disclosures.
+- Real-report evaluation is limited to the [Xiaomi FY2023-FY2024 development case](docs/cases/xiaomi-2023-2024/README.md), using AI-assisted labels and a separate AI verification pass. It is not an independent human benchmark or evidence of general accuracy. The bundled demo and offline test fixtures remain synthetic.
 
 ## License
 
@@ -312,7 +324,9 @@ python -m metric_mirage drift definition_2024.json definition_2025.json
 
 ### 方法與限制
 
-候選項目由保守規則提取，必須由使用者主動選取；比較結果僅描述已確認調整項目集合的變化，不能獨立證實完整財務公式已改變，也不提供財務舞弊或投資風險判斷。PDF 需有可提取的文字層，部分中文字型可能無法正確讀取；目前沒有 OCR。Dashboard 適用於本地單使用者操作，沒有登入驗證或多租戶隔離。內附資料皆為合成範例，尚未完成真實公司 PDF 驗證。專案採用 [MIT 授權](LICENSE)。
+候選項目由保守規則提取，必須由使用者主動選取；比較結果僅描述已確認調整項目集合的變化，不能獨立證實完整財務公式已改變，也不提供財務舞弊或投資風險判斷。PDF 需有可提取的文字層，部分中文字型可能無法正確讀取；目前沒有 OCR。Dashboard 適用於本地單使用者操作，沒有登入驗證或多租戶隔離。內附示範及離線測試仍使用合成資料。專案採用 [MIT 授權](LICENSE)。
+
+真實報告驗證請見[小米 FY2023-FY2024 案例](docs/cases/xiaomi-2023-2024/README.md)，包含官方來源、原文頁碼、候選與確認結果、漏抓項目、評估表及重現步驟。此為 AI 輔助標註及另一輪 AI 核對的開發案例，未經獨立真人基準驗證，亦未量測真人覆核時間；結果不能推廣為一般準確率。兩期已選取集合沒有新增或移除項目。執行案例前請依案例文件安裝 `python -m pip install -e ".[research]"`，啟用所需的 PDF 字型支援。
 
 ---
 
@@ -381,4 +395,6 @@ python -m metric_mirage drift definition_2024.json definition_2025.json
 
 ### 方法与限制
 
-候选项目由保守规则提取，必须由用户主动选择；比较结果仅描述已确认调整项目集合的变化，不能独立证实完整财务公式已改变，也不提供财务舞弊或投资风险判断。PDF 需要可提取的文本层，部分中文字体可能无法正确读取；目前没有 OCR。Dashboard 适用于本地单用户操作，没有登录验证或多租户隔离。内附数据均为合成示例，尚未完成真实公司 PDF 验证。项目采用 [MIT 许可证](LICENSE)。
+候选项目由保守规则提取，必须由用户主动选择；比较结果仅描述已确认调整项目集合的变化，不能独立证实完整财务公式已改变，也不提供财务舞弊或投资风险判断。PDF 需要可提取的文本层，部分中文字体可能无法正确读取；目前没有 OCR。Dashboard 适用于本地单用户操作，没有登录验证或多租户隔离。内附演示及离线测试仍使用合成数据。项目采用 [MIT 许可证](LICENSE)。
+
+真实报告验证请见[小米 FY2023-FY2024 案例](docs/cases/xiaomi-2023-2024/README.md)，包含官方来源、原文页码、候选与确认结果、漏抓项目、评估表及重现步骤。此为 AI 辅助标注及另一轮 AI 核对的开发案例，未经独立真人基准验证，也未测量真人复核时间；结果不能推广为一般准确率。两期已选取集合没有新增或移除项目。运行案例前请按案例文档安装 `python -m pip install -e ".[research]"`，启用所需的 PDF 字体支持。

@@ -1,5 +1,6 @@
 include app.py
 include .gitignore
+include .gitattributes
 include CONTRIBUTING.md SECURITY.md
 include .streamlit/config.toml
 include .github/REPOSITORY_METADATA.md
@@ -7,4 +8,6 @@ include .github/workflows/ci.yml
 recursive-include examples *.json
 recursive-include tests *.py
 recursive-include docs/images *.jpg
+recursive-include docs/cases *.md *.csv *.json
+include scripts/reproduce_xiaomi_case.py
 global-exclude __pycache__ *.py[cod]

@@ -30,6 +30,7 @@ _ADJUSTMENT_ALIASES: dict[str, tuple[str, ...]] = {
     "fair_value_changes": (
         "公允價值變動", "公允價值變化", "公允价值变动", "公允价值变化",
         "fair value changes", "changes in fair value",
+        "net fair value changes on investments",
     ),
     "impairment_losses": (
         "減值虧損", "減值損失", "减值亏损", "减值损失", "impairment losses",
@@ -44,6 +45,8 @@ _ADJUSTMENT_ALIASES: dict[str, tuple[str, ...]] = {
     "amortisation_of_intangible_assets": (
         "無形資產攤銷", "无形资产摊销",
         "amortisation of intangible assets", "amortization of intangible assets",
+        "amortisation of intangible assets resulting from acquisitions",
+        "amortization of intangible assets resulting from acquisitions",
     ),
 }
 
@@ -70,11 +73,16 @@ _ITEM_PATTERN = re.compile("|".join(
 ))
 _PARAGRAPH_BREAK = re.compile(r"\n[^\S\n]*\n")
 _PREFIX = r"\s*[\"'”’）)]?\s*(?:[:：]\s*)?"
+_ENGLISH_ADD_BACK = (
+    r"as (?:net )?profit(?: for the (?:year|period))?,?"
+    r" as adjusted by adding back(?![a-z0-9_])"
+)
 _ENGLISH_RELATION = (
     r"(?:excludes|excluding)(?![a-z0-9_])"
     r"|(?:is )?(?:calculated|computed|defined) by excluding(?![a-z0-9_])"
     r"|(?:is )?(?:calculated|computed|defined) as (?:net )?profit"
     r"(?: for the (?:year|period))? excluding(?![a-z0-9_])"
+    rf"|(?:is )?(?:calculated|computed|defined) {_ENGLISH_ADD_BACK}"
     r"|(?:'s )?adjustments? (?:include|comprise|are)(?![a-z0-9_])"
     r"|(?:reconciliation|adjustments?)\s*[:：]"
 )
@@ -86,6 +94,10 @@ _CHINESE_RELATION = (
 _RELATION_PATTERN = re.compile(
     _PREFIX + "(?:" + _ENGLISH_RELATION + "|" + _CHINESE_RELATION + ")"
 )
+_DEFINITION_PREFIX = re.compile(
+    r"(?<![a-z0-9_])(?:we define|the (?:group|company) defines)\s*[\"'“‘(]?\s*$"
+)
+_DEFINITION_ADD_BACK = re.compile(_PREFIX + _ENGLISH_ADD_BACK)
 _LIST_PREFIX = re.compile(
     r"\s*(?:(?:the )?(?:effects|impact) of\s+)?"
     r"(?:(?:the following(?: adjustments| items)?|以下(?:項目|项目)?|下列(?:項目|项目)?)\s*)?"
@@ -93,6 +105,8 @@ _LIST_PREFIX = re.compile(
 )
 _CONJUNCTION = re.compile(r"(?:and|or)(?![a-z0-9_])\s*|(?:及|和|與|与)")
 _BULLET = re.compile(r"[-•*]\s+")
+_ROMAN_NUMERALS = ("i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x")
+_NUMBERED_ITEM = re.compile(r"\((" + "|".join(_ROMAN_NUMERALS) + r")\)\s*")
 _HEADING_PREFIX = re.compile(r"reconciliation (?:of (?:net )?profit )?to ")
 _UNCERTAIN_PREFIX = re.compile(
     r"(?<![a-z0-9_])(?:not|never|incorrect|untrue|false|wrong|cannot|can't|"
@@ -133,13 +147,22 @@ def _relation_start(
     metric: re.Match[str],
 ) -> tuple[int, int] | None:
     """Find a directly attached positive relation or an explicit list heading."""
-    preceding = searchable[max(0, metric.start() - _CONTEXT_LIMIT):metric.start()]
+    preceding_start = max(0, metric.start() - _CONTEXT_LIMIT)
+    preceding = searchable[preceding_start:metric.start()]
     preceding = re.split(r"[.。!?！？;；]", preceding)[-1]
     if _UNCERTAIN_PREFIX.search(preceding):
         return None
     relation = _RELATION_PATTERN.match(searchable, metric.end())
     if relation is not None:
         return metric.start(), relation.end()
+
+    # A bare "as profit ... adding back" is accepted only with a directly
+    # attached affirmative definition, preserving that verb in the evidence.
+    definition = _DEFINITION_PREFIX.search(preceding)
+    relation = _DEFINITION_ADD_BACK.match(searchable, metric.end())
+    if definition is not None and relation is not None:
+        evidence_start = metric.start() - len(preceding) + definition.start()
+        return evidence_start, relation.end()
 
     # An English reconciliation heading can name the metric after "to".
     # Requiring the start of its raw line and a colon avoids prose proximity.
@@ -196,6 +219,8 @@ def _after_item(
             return True, bullet.end()
         if _ITEM_PATTERN.match(searchable, next_position):
             return True, next_position
+        if _NUMBERED_ITEM.match(searchable, next_position):
+            return True, next_position
     if searchable[next_position] == "等":
         remainder = searchable[next_position + 1:].lstrip()
         if not remainder or remainder[0] in ".。!！":
@@ -222,7 +247,17 @@ def _paragraph_candidates(
         prefix = _LIST_PREFIX.match(searchable, list_start)
         assert prefix is not None  # The optional prefix always matches.
         position = prefix.end()
+        ordinal = 0
         while position < len(searchable):
+            numbered = _NUMBERED_ITEM.match(searchable, position)
+            if numbered is not None:
+                next_ordinal = _ROMAN_NUMERALS.index(numbered.group(1)) + 1
+                if next_ordinal != ordinal + 1:
+                    break
+                ordinal = next_ordinal
+                position = numbered.end()
+            elif ordinal:
+                break
             item = _ITEM_PATTERN.match(searchable, position)
             if item is None:
                 break
@@ -283,8 +318,10 @@ def extract_adjustment_candidates(
     Original aliases and evidence remain raw PDF text. Evidence must include
     the metric, an explicit exclusion/adjustment/reconciliation relation, and
     the complete item within 600 raw characters, without crossing a blank
-    paragraph or sentence. Proximity alone and unsupported list syntax yield
-    no candidate. The function does not write definitions or infer drift.
+    paragraph or sentence. Explicit English add-back definitions and consecutive
+    parenthesized Roman list items are supported. Proximity alone and unsupported
+    list syntax yield no candidate. The function does not write definitions or
+    infer drift.
 
     Report selection, registered-byte checks, PDF extraction and unreadable or
     absent text errors are shared with search_report. An otherwise readable

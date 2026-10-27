@@ -1,0 +1,29 @@
+version,report_id,fiscal_period,pdf_page,canonical_item,target_level,classification,reason
+baseline,xiaomi-fy2023,FY2023,26,amortisation_of_intangible_assets,direct,FN,Original parser does not support the explicit adding-back Roman-numbered definition or reconciliation layout.
+baseline,xiaomi-fy2023,FY2023,26,fair_value_changes,direct,FN,Original parser does not support the explicit adding-back Roman-numbered definition or reconciliation layout.
+baseline,xiaomi-fy2023,FY2023,26,share_based_payments,direct,FN,Original parser does not support the explicit adding-back Roman-numbered definition or reconciliation layout.
+baseline,xiaomi-fy2023,FY2023,27,amortisation_of_intangible_assets,direct,FN,Original parser does not support the explicit adding-back Roman-numbered definition or reconciliation layout.
+baseline,xiaomi-fy2023,FY2023,27,fair_value_changes,direct,FN,Original parser does not support the explicit adding-back Roman-numbered definition or reconciliation layout.
+baseline,xiaomi-fy2023,FY2023,27,impairment_losses,nested,FN,Nested investment impairment provision is in a reconciliation footnote; existing aliases and same-paragraph relation do not capture it.
+baseline,xiaomi-fy2023,FY2023,27,share_based_payments,direct,FN,Original parser does not support the explicit adding-back Roman-numbered definition or reconciliation layout.
+baseline,xiaomi-fy2024,FY2024,30,amortisation_of_intangible_assets,direct,FN,Original parser does not support the explicit adding-back Roman-numbered definition or reconciliation layout.
+baseline,xiaomi-fy2024,FY2024,30,fair_value_changes,direct,FN,Original parser does not support the explicit adding-back Roman-numbered definition or reconciliation layout.
+baseline,xiaomi-fy2024,FY2024,30,share_based_payments,direct,FN,Original parser does not support the explicit adding-back Roman-numbered definition or reconciliation layout.
+baseline,xiaomi-fy2024,FY2023,31,amortisation_of_intangible_assets,direct,FN,Original parser does not support the explicit adding-back Roman-numbered definition or reconciliation layout.
+baseline,xiaomi-fy2024,FY2023,31,fair_value_changes,direct,FN,Original parser does not support the explicit adding-back Roman-numbered definition or reconciliation layout.
+baseline,xiaomi-fy2024,FY2024,31,impairment_losses,nested,FN,Nested investment impairment provision is in a reconciliation footnote; existing aliases and same-paragraph relation do not capture it.
+baseline,xiaomi-fy2024,FY2023,31,share_based_payments,direct,FN,Original parser does not support the explicit adding-back Roman-numbered definition or reconciliation layout.
+current,xiaomi-fy2023,FY2023,26,amortisation_of_intangible_assets,direct,TP,Exact supported source passage emitted and separately verified.
+current,xiaomi-fy2023,FY2023,26,fair_value_changes,direct,TP,Exact supported source passage emitted and separately verified.
+current,xiaomi-fy2023,FY2023,26,share_based_payments,direct,TP,Exact supported source passage emitted and separately verified.
+current,xiaomi-fy2024,FY2024,30,amortisation_of_intangible_assets,direct,TP,Exact supported source passage emitted and separately verified.
+current,xiaomi-fy2024,FY2024,30,fair_value_changes,direct,TP,Exact supported source passage emitted and separately verified.
+current,xiaomi-fy2024,FY2024,30,share_based_payments,direct,TP,Exact supported source passage emitted and separately verified.
+current,xiaomi-fy2023,FY2023,27,amortisation_of_intangible_assets,direct,FN,Table/continuation occurrence is not parsed as an explicit same-paragraph list; the concept was found on the definition page instead.
+current,xiaomi-fy2023,FY2023,27,fair_value_changes,direct,FN,Table/continuation occurrence is not parsed as an explicit same-paragraph list; the concept was found on the definition page instead.
+current,xiaomi-fy2023,FY2023,27,impairment_losses,nested,FN,Nested investment impairment provision is in a reconciliation footnote; existing aliases and same-paragraph relation do not capture it.
+current,xiaomi-fy2023,FY2023,27,share_based_payments,direct,FN,Table/continuation occurrence is not parsed as an explicit same-paragraph list; the concept was found on the definition page instead.
+current,xiaomi-fy2024,FY2023,31,amortisation_of_intangible_assets,direct,FN,Table/continuation occurrence is not parsed as an explicit same-paragraph list; the concept was found on the definition page instead.
+current,xiaomi-fy2024,FY2023,31,fair_value_changes,direct,FN,Table/continuation occurrence is not parsed as an explicit same-paragraph list; the concept was found on the definition page instead.
+current,xiaomi-fy2024,FY2024,31,impairment_losses,nested,FN,Nested investment impairment provision is in a reconciliation footnote; existing aliases and same-paragraph relation do not capture it.
+current,xiaomi-fy2024,FY2023,31,share_based_payments,direct,FN,Table/continuation occurrence is not parsed as an explicit same-paragraph list; the concept was found on the definition page instead.
